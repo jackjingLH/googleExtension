@@ -1,0 +1,3 @@
+/**
+ * 金铲铲 - 小红书评论AI分析 Service Worker
+ */
