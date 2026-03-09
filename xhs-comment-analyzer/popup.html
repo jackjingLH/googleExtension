@@ -2,21 +2,54 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>金铲铲 - 小红书评论AI分析</title>
+  <title>金铲铲 · 设置</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div id="app">
     <header class="header">
-      <span class="logo">🪙 金铲铲</span>
-      <span class="subtitle">小红书评论AI分析</span>
-    </header>
-    <main id="main">
-      <!-- 内容区域（待开发） -->
-      <div class="placeholder">
-        <p>功能开发中...</p>
+      <span class="logo">🪙</span>
+      <div class="header-text">
+        <div class="title">金铲铲</div>
+        <div class="subtitle">小红书评论AI分析</div>
       </div>
+    </header>
+
+    <main class="main">
+      <div class="field">
+        <label class="label" for="provider">AI 服务商</label>
+        <select id="provider" class="select">
+          <option value="zhipu">智谱AI（glm-4-flash · 免费推荐）</option>
+          <option value="aliyun">阿里云（qwen-turbo）</option>
+          <option value="openai">OpenAI（gpt-4o-mini）</option>
+          <option value="relay">自定义中转</option>
+        </select>
+      </div>
+
+      <div class="field" id="relay-url-field">
+        <label class="label" for="relayUrl">中转服务地址</label>
+        <input id="relayUrl" type="text" class="input" placeholder="https://your-relay.com">
+      </div>
+
+      <div class="field">
+        <label class="label" for="apiKey">API Key</label>
+        <input id="apiKey" type="password" class="input" placeholder="请输入 API Key">
+      </div>
+
+      <div class="field">
+        <div class="label-row">
+          <label class="label">自定义 System Prompt</label>
+          <button id="toggle-prompt" class="toggle-btn">展开</button>
+        </div>
+        <div id="prompt-wrap" class="prompt-wrap">
+          <textarea id="systemPrompt" class="textarea" rows="10"
+            placeholder="留空则使用默认 TFT 阵容分析 Prompt"></textarea>
+          <button id="reset-prompt" class="link-btn">重置为默认</button>
+        </div>
+      </div>
+
+      <button id="save" class="save-btn">保存设置</button>
+      <div id="status" class="status"></div>
     </main>
   </div>
   <script src="popup.js"></script>
